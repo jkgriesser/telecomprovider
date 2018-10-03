@@ -7,16 +7,13 @@ import java.util.Objects;
  */
 public class PhoneNumber {
 
-    private final int countryCode;
-    private final int areaCode;
-    private final int phoneNumber;
+    private int countryCode;
+    private int areaCode;
+    private int phoneNumber;
 
     private boolean activated;
 
-    public PhoneNumber(int countryCode, int areaCode, int phoneNumber) {
-        this.countryCode = countryCode;
-        this.areaCode = areaCode;
-        this.phoneNumber = phoneNumber;
+    public PhoneNumber() {
     }
 
     /**
@@ -54,12 +51,13 @@ public class PhoneNumber {
         PhoneNumber that = (PhoneNumber) o;
         return countryCode == that.countryCode &&
                 areaCode == that.areaCode &&
-                phoneNumber == that.phoneNumber;
+                phoneNumber == that.phoneNumber &&
+                activated == that.activated;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(countryCode, areaCode, phoneNumber);
+        return Objects.hash(countryCode, areaCode, phoneNumber, activated);
     }
 
     @Override
