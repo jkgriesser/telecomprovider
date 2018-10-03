@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class PhoneNumberController {
 
     private PhoneNumberRepository repository = new PhoneNumberRepository();
@@ -23,13 +24,13 @@ public class PhoneNumberController {
         return repository.getAll();
     }
 
-    @GetMapping("/phonenumbers/")
-    List<PhoneNumber> findByCustomerId(@RequestParam(value="customerId") Integer customerId) {
+    @GetMapping("/customers/{customerId}/phonenumbers")
+    List<PhoneNumber> findByCustomerId(@PathVariable Integer customerId) {
         return repository.findByCustomerId(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException(customerId));
     }
 
-    @PatchMapping("phonenumbers/{phoneNumber}/activate")
+    @PatchMapping("/phonenumbers/{phoneNumber}/activate")
     PhoneNumber activate(@PathVariable String phoneNumber) {
         return repository.activate(phoneNumber)
                 .orElseThrow(() -> new PhoneNumberNotFoundException(phoneNumber));
