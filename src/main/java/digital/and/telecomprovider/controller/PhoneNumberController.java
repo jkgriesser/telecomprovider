@@ -1,11 +1,10 @@
 package digital.and.telecomprovider.controller;
 
 import digital.and.telecomprovider.exception.CustomerNotFoundException;
+import digital.and.telecomprovider.exception.PhoneNumberNotFoundException;
 import digital.and.telecomprovider.model.PhoneNumber;
 import digital.and.telecomprovider.repository.PhoneNumberRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +27,12 @@ public class PhoneNumberController {
     List<PhoneNumber> findByCustomerId(@RequestParam(value="customerId") Integer customerId) {
         return repository.findByCustomerId(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException(customerId));
+    }
+
+    @PatchMapping("phonenumbers/{phoneNumber}/activate")
+    PhoneNumber activate(@PathVariable String phoneNumber) {
+        return repository.activate(phoneNumber)
+                .orElseThrow(() -> new PhoneNumberNotFoundException(phoneNumber));
     }
 
 }
