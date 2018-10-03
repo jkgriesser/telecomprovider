@@ -27,24 +27,24 @@ public class PhoneNumberControllerTest {
     }
 
     @Test
-    public void when_findByCustomerIdCalledWithValidId_thenReturnListOfPhoneNumbers() {
+    public void when_findByCustomerIdCalled_withValidId_thenReturnListOfPhoneNumbers() {
         List<PhoneNumber> phoneNumbers = controller.findByCustomerId(1);
 
         assertFalse(phoneNumbers.isEmpty());
     }
 
     @Test(expected = CustomerNotFoundException.class)
-    public void when_findByCustomerIdCalledWithInvalidId_thenThrowException() {
+    public void when_findByCustomerIdCalled_withInvalidId_thenThrowException() {
         controller.findByCustomerId(-1);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void when_findByCustomerIdCalledWithNull_thenThrowException() {
+    public void when_findByCustomerIdCalled_withNull_thenThrowException() {
         controller.findByCustomerId(null);
     }
 
     @Test
-    public void when_activateCalledWithValidNumber_thenReturnActivatedPhoneNumber() {
+    public void when_activateCalled_withValidNumber_thenReturnActivatedPhoneNumber() {
         PhoneNumber phoneNumber = controller.activate("+44-20-12345678");
 
         assertNotNull(phoneNumber);
@@ -52,12 +52,12 @@ public class PhoneNumberControllerTest {
     }
 
     @Test(expected = PhoneNumberNotFoundException.class)
-    public void when_activateCalledWithInvalidNumber_thenThrowException() {
+    public void when_activateCalled_withInvalidNumber_thenThrowException() {
         controller.activate("invalidPhoneNumber");
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void when_activateCalledWithNull_thenThrowException() {
+    public void when_activateCalled_withNull_thenThrowException() {
         controller.activate(null);
     }
 

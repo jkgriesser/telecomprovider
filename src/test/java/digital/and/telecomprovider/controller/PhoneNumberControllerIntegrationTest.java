@@ -67,7 +67,7 @@ public class PhoneNumberControllerIntegrationTest {
     }
 
     @Test
-    public void when_GetIsCalledOnPhoneNumbersForCustomerPathWithValidId_thenReturnListOfPhoneNumbers() {
+    public void when_GetIsCalledOnPhoneNumbersForCustomerPath_withValidId_thenReturnListOfPhoneNumbers() {
         ResponseEntity<List<PhoneNumber>> response = restTemplate.exchange(
                 createURLWithPort("/api/customers/1/phonenumbers"),
                 HttpMethod.GET,
@@ -82,7 +82,7 @@ public class PhoneNumberControllerIntegrationTest {
     }
 
     @Test
-    public void when_GetIsCalledOnPhoneNumbersForCustomerPathWithInvalidId_thenReturnNotFound() {
+    public void when_GetIsCalledOnPhoneNumbersForCustomerPath_withInvalidId_thenReturnNotFound() {
         ResponseEntity<String> response = restTemplate.exchange(
                 createURLWithPort("/api/customers/999/phonenumbers"),
                 HttpMethod.GET,
@@ -93,7 +93,7 @@ public class PhoneNumberControllerIntegrationTest {
     }
 
     @Test
-    public void when_GetIsCalledOnPhoneNumbersForCustomerPathWithString_thenReturnBadRequest() {
+    public void when_GetIsCalledOnPhoneNumbersForCustomerPath_withString_thenReturnBadRequest() {
         ResponseEntity<String> response = restTemplate.exchange(
                 createURLWithPort("/api/customers/notAnId/phonenumbers"),
                 HttpMethod.GET,
@@ -116,7 +116,7 @@ public class PhoneNumberControllerIntegrationTest {
      *     https://github.com/spring-cloud/spring-cloud-netflix/issues/1777</a>
      */
     @Test
-    public void when_PatchIsCalledOnActivatePhoneNumberPathWithValidNumber_thenReturnActivatedPhoneNumber() {
+    public void when_PatchIsCalledOnActivatePhoneNumberPath_withValidNumber_thenReturnActivatedPhoneNumber() {
         ResponseEntity<PhoneNumber> response = restTemplate.exchange(
                 createURLWithPort("/api/phonenumbers/+44-20-12345678/activate"),
                 HttpMethod.PATCH,
@@ -131,7 +131,7 @@ public class PhoneNumberControllerIntegrationTest {
     }
 
     @Test
-    public void when_PatchIsCalledOnActivatePhoneNumberPathWithInValidNumber_thenReturnNotFound() {
+    public void when_PatchIsCalledOnActivatePhoneNumberPath_withInValidNumber_thenReturnNotFound() {
         ResponseEntity<String> response = restTemplate.exchange(
                 createURLWithPort("/api/phonenumbers/123/activate"),
                 HttpMethod.PATCH,
