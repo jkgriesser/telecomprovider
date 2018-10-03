@@ -13,7 +13,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TelecomProviderApplicationTests {
+public class TelecomProviderApplicationTest {
 
 	@Autowired
 	private ApplicationContext applicationContext;
