@@ -14,7 +14,7 @@ public class PhoneNumberController {
 
     private PhoneNumberRepository repository = new PhoneNumberRepository();
 
-    @GetMapping("/")
+    @GetMapping("")
     String getGreeting() {
         return "Hello World! Welcome to the Telecom Provider Phone Number REST API.";
     }
